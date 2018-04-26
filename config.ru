@@ -2,4 +2,6 @@
 
 require_relative 'config/environment'
 
-run Huginn::Application
+map "/#{ENV['ROOT_PATH']}" do
+  run Huginn::Application
+end
