@@ -1,9 +1,9 @@
 FROM ubuntu:14.04
 
-COPY ./docker/scripts/prepare /scripts/
+COPY ./docker/scripts/prepare /scripts/prepare
 RUN /scripts/prepare
 
-COPY ./docker/multi-process/scripts/standalone-packages /scripts/
+COPY ./docker/multi-process/scripts/standalone-packages /scripts/standalone-packages
 RUN /scripts/standalone-packages
 
 WORKDIR /app
