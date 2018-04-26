@@ -93,11 +93,11 @@ Huginn::Application.routes.draw do
     end
   end
 
-  get "/worker_status" => "worker_status#show"
+  get "worker_status" => "worker_status#show"
 
-  match "/users/:user_id/web_requests/:agent_id/:secret" => "web_requests#handle_request", :as => :web_requests, :via => [:get, :post, :put, :delete]
-  post  "/users/:user_id/webhooks/:agent_id/:secret" => "web_requests#handle_request" # legacy
-  post  "/users/:user_id/update_location/:secret" => "web_requests#update_location" # legacy
+  match "users/:user_id/web_requests/:agent_id/:secret" => "web_requests#handle_request", :as => :web_requests, :via => [:get, :post, :put, :delete]
+  post  "users/:user_id/webhooks/:agent_id/:secret" => "web_requests#handle_request" # legacy
+  post  "users/:user_id/update_location/:secret" => "web_requests#update_location" # legacy
 
   devise_for :users,
              controllers: { 
@@ -107,9 +107,9 @@ Huginn::Application.routes.draw do
              sign_out_via: [:post, :delete]
   
   if Rails.env.development?
-    mount LetterOpenerWeb::Engine, at: "/letter_opener"
+    mount LetterOpenerWeb::Engine, at: "letter_opener"
   end
 
-  get "/about" => "home#about"
+  get "about" => "home#about"
   root :to => "home#index"
 end
